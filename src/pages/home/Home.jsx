@@ -1,8 +1,14 @@
 import useTitleSet from "../../hooks/useTitleSet";
+import HeroSection from "./HeroSection";
 
 const Home = () => {
   useTitleSet("Home");
-  return <h1>Home</h1>;
+  return (
+    <>
+      <HeroSection />
+      <div className=" h-screen"></div>
+    </>
+  );
 };
 
 export default Home;
