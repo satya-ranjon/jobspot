@@ -28,7 +28,7 @@ const Navbar = () => {
   }, [width]);
 
   return (
-    <div className=" py-4 ">
+    <div className=" py-4 bg-[#e8f3f7] ">
       <Container>
         <div className="flex justify-between items-center">
           <div className=" flex justify-start items-center gap-8">
@@ -38,7 +38,7 @@ const Navbar = () => {
                 className={`${
                   width <= 768 &&
                   " absolute bg-white h-screen top-0 right-0 w-64 border-l-2 "
-                } flex flex-col lg:flex-row justify-start items-center gap-3 text-zinc-500 text-md font-normal`}>
+                } flex flex-col lg:flex-row justify-start items-center gap-3 text-zinc-500 text-md font-normal z-50 `}>
                 <button
                   onClick={() => setIsOpen(false)}
                   className="text-zinc-500 py-10 text-3xl lg:hidden hover:text-yellow-500 duration-300 transition-colors">
@@ -59,7 +59,7 @@ const Navbar = () => {
                 <button className="lg:hidden flex justify-start items-center gap-2 text-zinc-500 text-lg round-md font-normal px-3 py-1 border-[1px] border-[#22c55e45] ">
                   <Avatar /> My Account
                 </button>
-                <button className=" lg:hidden text-green-500 text-lg round-md font-normal px-3 py-1 bg-[#22c55e2e] ">
+                <button className=" lg:hidden text-green-500 text-lg round-md font-normal px-3 py-1 bg-[#22c55e1b] ">
                   Login/Register
                 </button>
                 <button className=" lg:hidden text-white text-lg round-md font-normal px-3 py-1 bg-green-500 ">
@@ -72,7 +72,7 @@ const Navbar = () => {
             {/* <button className=" flex justify-start items-center gap-2 text-zinc-500 text-lg round-md font-normal px-3 py-1 border-[1px] border-[#22c55e45] ">
               <Avatar /> My Account
             </button> */}
-            <button className=" text-green-500 text-lg round-md font-normal px-3 py-1 bg-[#22c55e2e] ">
+            <button className=" text-green-500 text-lg round-md font-normal px-3 py-1 bg-[#22c55e1b] ">
               Login/Register
             </button>
             <button className=" text-white text-lg round-md font-normal px-3 py-1 bg-green-500 ">
