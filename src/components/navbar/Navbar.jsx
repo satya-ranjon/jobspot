@@ -4,8 +4,10 @@ import Container from "../common/Container";
 import Logo from "../common/Logo";
 import { NavLink } from "react-router-dom";
 import { FaBarsStaggered } from "react-icons/fa6";
-import { AiOutlineClose } from "react-icons/ai";
+import { AiOutlineClose, AiOutlineCaretDown } from "react-icons/ai";
 import { useLayoutEffect, useState } from "react";
+import useAuthentication from "../../hooks/useAuthentication";
+import MyAccountBtn from "./MyAccountBtn";
 
 const menu = [
   { link: "/", label: "Home" },
@@ -17,6 +19,7 @@ const menu = [
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [width] = useDisplayWidth();
+  const { user } = useAuthentication();
 
   useLayoutEffect(() => {
     if (768 <= width) {
@@ -56,12 +59,19 @@ const Navbar = () => {
                     {item.label}
                   </NavLink>
                 ))}
-                <button className="lg:hidden flex justify-start items-center gap-2 text-zinc-500 text-lg round-md font-normal px-3 py-1 border-[1px] border-[#22c55e45] ">
-                  <Avatar /> My Account
-                </button>
-                <button className=" lg:hidden text-green-500 text-lg round-md font-normal px-3 py-1 bg-[#22c55e1b] ">
-                  Login/Register
-                </button>
+
+                {user ? (
+                  <div className="lg:hidden">
+                    <MyAccountBtn />
+                  </div>
+                ) : (
+                  <NavLink
+                    to="/login"
+                    className=" lg:hidden text-green-500 text-lg round-md font-normal px-3 py-1 bg-[#22c55e1b] ">
+                    Login/Register
+                  </NavLink>
+                )}
+
                 <button className=" lg:hidden text-white text-lg round-md font-normal px-3 py-1 bg-green-500 ">
                   Add a Job
                 </button>
@@ -69,12 +79,17 @@ const Navbar = () => {
             )}
           </div>
           <div className=" hidden lg:flex justify-start gap-4 items-center ">
-            {/* <button className=" flex justify-start items-center gap-2 text-zinc-500 text-lg round-md font-normal px-3 py-1 border-[1px] border-[#22c55e45] ">
-              <Avatar /> My Account
-            </button> */}
-            <button className=" text-green-500 text-lg round-md font-normal px-3 py-1 bg-[#22c55e1b] ">
-              Login/Register
-            </button>
+            {user ? (
+              <div className="hidden lg:block">
+                <MyAccountBtn />
+              </div>
+            ) : (
+              <NavLink
+                to="/login"
+                className=" text-green-500 text-lg round-md font-normal px-3 py-1 bg-[#22c55e1b] ">
+                Login/Register
+              </NavLink>
+            )}
             <button className=" text-white text-lg round-md font-normal px-3 py-1 bg-green-500 ">
               Add a Job
             </button>
