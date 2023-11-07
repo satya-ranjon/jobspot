@@ -1,8 +1,21 @@
-const Avatar = ({ url }) => {
+const Avatar = ({ url, name }) => {
+  const width = `w-${parseInt(name?.length) * 2 + 4}`;
   return (
     <>
       {url ? (
-        <img className="w-6 h-6 rounded-full" src={url} alt="Rounded avatar" />
+        <div className=" relative group">
+          <img
+            className="w-6 h-6 rounded-full"
+            src={url}
+            alt="Rounded avatar"
+          />
+          {name && (
+            <div
+              className={`${width} hidden group-hover:block absolute -bottom-8 bg-green-500 px-1 text-sm text-white`}>
+              {name}
+            </div>
+          )}
+        </div>
       ) : (
         <div className="relative w-6 h-6 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
           <svg

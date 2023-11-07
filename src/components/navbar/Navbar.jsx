@@ -72,9 +72,11 @@ const Navbar = () => {
                   </NavLink>
                 )}
 
-                <button className=" lg:hidden text-white text-lg round-md font-normal px-3 py-1 bg-green-500 ">
+                <NavLink
+                  to="/create-job"
+                  className=" lg:hidden text-white text-lg round-md font-normal px-3 py-1 bg-green-500 ">
                   Add a Job
-                </button>
+                </NavLink>
               </div>
             )}
           </div>
@@ -90,9 +92,11 @@ const Navbar = () => {
                 Login/Register
               </NavLink>
             )}
-            <button className=" text-white text-lg round-md font-normal px-3 py-1 bg-green-500 ">
+            <NavLink
+              to="/create-job"
+              className=" text-white text-lg round-md font-normal px-3 py-1 bg-green-500 ">
               Add a Job
-            </button>
+            </NavLink>
           </div>
           <div
             onClick={() => setIsOpen(true)}

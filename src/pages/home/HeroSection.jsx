@@ -24,6 +24,11 @@ const HeroSection = () => {
               <h1 className="text-4xl lg:text-5xl xl:text-7xl font-bold  text-center md:text-start">
                 Find your job & make sure goal.
               </h1>
+              {/* Descriptions  */}
+              <h4 className=" text-center md:text-start">
+                Connecting Job Seekers and Employers for Success
+              </h4>
+
               {/* Search  */}
               <div className="w-full rounded-md bg-white p-1 lg:p-2 flex justify-start items-center">
                 <input

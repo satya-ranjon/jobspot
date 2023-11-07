@@ -13,3 +13,28 @@
 .textMono {
   font-family: "Sometype Mono", monospace;
 }
+
+.float-label-input {
+  margin: 32px 0;
+}
+
+.float-label-input:focus-within label,
+.float-label-input input:not(:placeholder-shown) + label {
+  transform: translateY(-1.5rem) scale(0.75);
+  background-color: white;
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
+}
+.react-datepicker-wrapper .react-datepicker__input-container input {
+  padding: 9px;
+  border: 1.5px solid #ced2d8;
+  width: 100%;
+  border-radius: 3px;
+  outline: none;
+}
+
+.react-datepicker-wrapper .react-datepicker__input-container input:focus {
+  border: 1.5px solid #4eff03;
+}
