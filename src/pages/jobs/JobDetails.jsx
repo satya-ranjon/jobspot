@@ -77,7 +77,9 @@ const JobDetails = () => {
       },
     };
     request
-      .post("/apply", apply)
+      .post("/apply", apply, {
+        withCredentials: true,
+      })
       .then((response) => {
         console.log("Response data:", response.data);
         handleApplyModal();

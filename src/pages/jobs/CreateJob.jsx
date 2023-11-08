@@ -47,7 +47,9 @@ const CreateJob = () => {
       },
     };
     request
-      .post("/jobs", newJob)
+      .post("/jobs", newJob, {
+        withCredentials: true,
+      })
       .then((response) => {
         console.log("Response data:", response.data);
         setLoading(false);

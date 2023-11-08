@@ -64,7 +64,9 @@ const UpdateJob = () => {
       description,
     };
     request
-      .put(`/updatejob/${id}`, updateData)
+      .put(`/updatejob/${id}`, updateData, {
+        withCredentials: true,
+      })
       .then((response) => {
         console.log("Response data:", response.data);
         setLoading(false);

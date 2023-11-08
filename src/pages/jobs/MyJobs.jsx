@@ -23,7 +23,9 @@ const MyJobs = () => {
   useEffect(() => {
     setLoading(true);
     request
-      .get(`/myjob?email=${user?.email}`)
+      .get(`/myjob?email=${user?.email}`, {
+        withCredentials: true,
+      })
       .then((res) => {
         setData(res.data);
         setLoading(false);
