@@ -14,6 +14,7 @@ const menu = [
   { link: "all-jobs", label: "All Jobs" },
   { link: "/applied-jobs", label: "Applied Jobs" },
   { link: "/my-jobs", label: "My Jobs" },
+  { link: "/blog/1", label: "Blog" },
 ];
 
 const Navbar = () => {

@@ -1,7 +1,9 @@
 import { images } from "../../constant";
 import { Link } from "react-router-dom";
+import useTitleSet from "../../hooks/useTitleSet";
 
 const NotFound = () => {
+  useTitleSet("Not Found");
   return (
     <div className="h-screen flex-col w-full flex justify-center items-center bg-[#f7f7f7]">
       <img

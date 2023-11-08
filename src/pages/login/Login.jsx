@@ -4,13 +4,14 @@ import { useState } from "react";
 import useAuthentication from "../../hooks/useAuthentication";
 import Swal from "sweetalert2";
 import AuthLayout from "../../layout/AuthLayout";
+import useTitleSet from "../../hooks/useTitleSet";
 
 const Login = () => {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
   const { login, user } = useAuthentication();
-
+  useTitleSet("Login");
   const { state } = useLocation();
   const navigate = useNavigate();
 

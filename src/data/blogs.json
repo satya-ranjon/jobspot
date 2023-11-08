@@ -1,0 +1,92 @@
+[
+  {
+    "id": "1",
+    "createAt": "August 31,2023",
+    "comments": 20,
+    "img": "https://miro.medium.com/v2/resize:fit:720/format:webp/1*9Kd8C1KnKM6Qziv13I8Csg.jpeg",
+    "author": "Satya Ranjon",
+    "title": "What is an access token and refresh token? How do they work and where should we store them on the client-side?",
+    "description": [
+      {
+        "id": "1",
+        "label": "Access Token",
+        "doc": "An access token is a short-lived, temporary credential that grants a client application the right to access a specific set of resources or perform certain actions on behalf of a user."
+      },
+      {
+        "id": "2",
+        "label": "Working",
+        "doc": "Access tokens are issued by an authorization server after user authentication and consent. They are presented by the client application when making requests to protected resources. Access tokens typically have a limited validity period, and when they expire, the client application needs to request a new one."
+      },
+      {
+        "id": "3",
+        "label": "Storage on Client-Side",
+        "options": [
+          "Store in memory during runtime.",
+          "Store in HTTP-only cookies for added security.",
+          "Avoid storing in local storage or session storage due to security vulnerabilities."
+        ]
+      },
+
+      {
+        "id": "4",
+        "label": "Refresh Token",
+        "doc": "A refresh token is a long-lived credential used to obtain a new access token without requiring the user to re-authenticate. It is typically more secure and has a longer lifespan than access tokens."
+      },
+      {
+        "id": "5",
+        "label": "Working",
+        "doc": "Refresh tokens are issued alongside access tokens and are securely stored on the client side. When an access token expires, the client application can use the refresh token to obtain a new access token from the authorization server without user involvement."
+      },
+      {
+        "id": "6",
+        "label": "Storage on Client-Side",
+        "doc": "Refresh tokens should be stored securely on the client side, but must never be exposed to unauthorized parties. They are typically stored in a secure server-side location, and requests for new access tokens should be made from server to server."
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "createAt": "November 8,2023",
+    "comments": 25,
+    "img": "https://miro.medium.com/v2/resize:fit:720/format:webp/1*acfsKMRrZSpogDM_FKEAUQ.jpeg",
+    "author": "Satya Ranjon",
+    "title": "What is express js? What is Nest JS?",
+    "description": [
+      {
+        "id": "1",
+        "label": "Express.js",
+        "doc": "Express.js is a popular and minimalistic web application framework for Node.js. It simplifies the process of building web applications and APIs by providing a set of robust features and tools for routing, middleware, and handling HTTP requests and responses.",
+        "options": [
+          "Middleware: Express allows the use of middleware functions to process HTTP requests before they reach the application's routes, enabling tasks like authentication, logging, and data parsing.",
+          "Routing: Express offers a straightforward routing system for defining endpoints and handling HTTP methods (GET, POST, PUT, DELETE, etc.).",
+          "Simplicity: It is known for its simplicity and minimalism, making it easy to use and customize for various web development projects.",
+          "Large Ecosystem: A vast ecosystem of third-party middleware and plugins is available to extend functionality as needed.",
+          "Scalability: While it is minimalistic, Express is highly scalable and can be used for both small and large-scale applications."
+        ]
+      },
+      {
+        "id": "2",
+        "label": "Nest.js",
+        "doc": "Nest.js is a progressive and opinionated Node.js framework for building scalable and maintainable server-side applications. It combines elements of TypeScript, object-oriented programming, and functional programming to provide a robust foundation for building backend services.",
+        "options": [
+          "Modularity: Nest.js promotes a modular architecture, making it easy to organize code into reusable and maintainable modules.",
+          "TypeScript: It is built with TypeScript, which offers strong typing and better tooling for writing clean and error-free code.",
+          "Dependency Injection: Nest.js utilizes dependency injection to manage the creation and sharing of components, enhancing code reusability and testability.",
+          "Decorators: It uses decorators to define various aspects of a module, including routes, providers, and more.",
+          "Support for WebSockets: Nest.js supports real-time communication through WebSockets, making it suitable for applications that require instant data updates.",
+          "Interceptors and Guards: Nest.js provides features like interceptors and guards for managing HTTP requests and responses, enabling fine-grained control over the application's behavior."
+        ]
+      },
+      {
+        "id": "3",
+        "label": "Use Cases",
+        "options": [
+          "API development",
+          "Microservices architecture",
+          "Real-time applications",
+          "Backend for web and mobile applications"
+        ]
+      }
+    ]
+  }
+]

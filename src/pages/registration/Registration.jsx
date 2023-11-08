@@ -4,6 +4,7 @@ import { useState } from "react";
 import useAuthentication from "../../hooks/useAuthentication";
 import Swal from "sweetalert2";
 import AuthLayout from "../../layout/AuthLayout";
+import useTitleSet from "../../hooks/useTitleSet";
 
 const Registration = () => {
   const [error, setError] = useState(null);
@@ -14,6 +15,8 @@ const Registration = () => {
 
   const { state } = useLocation();
   const navigate = useNavigate();
+
+  useTitleSet("Registration");
 
   const handleSubmit = (data) => {
     const { email, password, name, photoUrl } = data;

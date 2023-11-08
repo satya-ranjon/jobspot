@@ -6,7 +6,7 @@ const HeroSection = () => {
   return (
     <div className=" flex flex-col md:flex-row justify-between items-center gap-3 bg-[#e8f3f7] relative">
       <div className=" w-full h-96"></div>
-      <div className=" w-full">
+      <div className=" w-full min-h-[700px]">
         <img src={images.hero} alt="hero" />
       </div>
       <div className=" absolute h-full w-full">
