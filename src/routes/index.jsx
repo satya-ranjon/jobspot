@@ -5,10 +5,14 @@ import NotFound from "../pages/notfound";
 import { createBrowserRouter } from "react-router-dom";
 import Registration from "../pages/registration/Registration";
 import PublicRoutes from "./PublicRoutes";
+import PrivateRoutes from "./PrivateRoutes";
 import AllJobs from "../pages/jobs/AllJobs";
-import AppliedJobs from "../pages/AppliedJobs/AppliedJobs";
-import MyJobs from "../pages/my-jobs/MyJobs";
+import MyJobs from "../pages/jobs/MyJobs";
 import CreateJob from "../pages/jobs/CreateJob";
+import JobDetails from "../pages/jobs/JobDetails";
+import Blog from "../pages/blog/Blog";
+import AppliedJobs from "../pages/jobs/AppliedJobs";
+import UpdateJob from "../pages/jobs/UpdateJob";
 
 const router = createBrowserRouter([
   {
@@ -42,15 +46,47 @@ const router = createBrowserRouter([
       },
       {
         path: "/applied-jobs",
-        element: <AppliedJobs />,
+        element: (
+          <PrivateRoutes>
+            <AppliedJobs />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/my-jobs",
-        element: <MyJobs />,
+        element: (
+          <PrivateRoutes>
+            <MyJobs />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/create-job",
-        element: <CreateJob />,
+        element: (
+          <PrivateRoutes>
+            <CreateJob />
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "/job/:id",
+        element: (
+          <PrivateRoutes>
+            <JobDetails />
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "/update-job/:id",
+        element: (
+          <PrivateRoutes>
+            <UpdateJob />
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "/blog/:id",
+        element: <Blog />,
       },
     ],
   },
