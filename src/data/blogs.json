@@ -88,5 +88,38 @@
         ]
       }
     ]
+  },
+  {
+    "id": "3",
+    "createAt": "November 7,2023",
+    "comments": 25,
+    "img": "https://i.ibb.co/tsQFSPL/Screenshot-2023-11-08-204941.png",
+    "author": "Satya Ranjon",
+    "title": "Explain your code.",
+    "description": [
+      {
+        "id": "1",
+        "label": "Create a Job Post",
+        "doc": "The code starts by importing various dependencies and components from different libraries, such as React, React Select, and others. These imports are required for the component to work properly."
+      },
+      {
+        "id": "2",
+        "label": "handleSubmit Function:",
+        "doc": "The handleSubmit function is defined to handle the form submission. It is triggered when the user submits the form. Inside this function, the component extracts the data from the form inputs, packages it into a JavaScript object, and sends an HTTP POST request to create a new job listing using the axios library. If the request is successful, it displays a success message using SweetAlert2 and resets the form fields"
+      },
+      {
+        "id": "3",
+        "label": "Rendered JSX",
+        "options": [
+          "Inside the return statement, the component renders JSX elements.",
+          "PageHeader component: Displays a page header with the title ",
+          "form element: Represents the job posting form. It includes various input fields, a dropdown select for job categories, a date picker for the application deadline, and a submit button.",
+          "Input fields: Allow the user to input information about the job, such as the job banner URL, title, salary, and job description.",
+          "Select dropdown: Allows the user to select the job category from the predefined options.",
+          "Date picker: Allows the user to pick a deadline date.",
+          "Submit button: Triggers the handleSubmit function when clicked. It can be in a loading state, showing a loading spinner when the form is being submitted."
+        ]
+      }
+    ]
   }
 ]

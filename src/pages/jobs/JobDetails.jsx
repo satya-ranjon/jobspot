@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { request } from "../../utils/axios";
 import { useParams } from "react-router-dom";
 import Loader from "../../components/common/Loader";
@@ -14,6 +14,7 @@ import InputField from "../../components/common/InputField";
 import Swal from "sweetalert2";
 import { bgColorByCatagories } from "../../components/common/JobCard";
 import useTitleSet from "../../hooks/useTitleSet";
+import emailjs from "@emailjs/browser";
 
 const JobDetails = () => {
   const [data, setData] = useState([]);
@@ -24,6 +25,7 @@ const JobDetails = () => {
   const [resume, setResume] = useState("");
   const [applyModalIsOpen, setApplyModalIsOpen] = useState(false);
   useTitleSet("Job Details");
+  const form = useRef();
 
   const { id } = useParams();
 
@@ -83,6 +85,22 @@ const JobDetails = () => {
       .then((response) => {
         console.log("Response data:", response.data);
         handleApplyModal();
+        emailjs
+          .sendForm(
+            "service_6sq35us",
+            "template_xjvpamt",
+            form.current,
+            "3ubMgALnbHWBTu2Mw"
+          )
+          .then(
+            (result) => {
+              console.log(result.text);
+            },
+            (error) => {
+              console.log(error.text);
+            }
+          );
+
         Swal.fire({
           icon: "success",
           title: "Apply Successfully",
@@ -93,10 +111,7 @@ const JobDetails = () => {
       .catch((error) => {
         console.error("Error:", error);
       });
-    // console.log(apply);
   };
-
-  // console.log(data);
 
   const date1 = new Date();
   const date2 = new Date(data?.deadline);
@@ -208,7 +223,7 @@ const JobDetails = () => {
                 />
               </div>
 
-              <form onSubmit={handleApply} className="mt-3">
+              <form ref={form} onSubmit={handleApply} className="mt-3">
                 <InputField
                   onChange={(e) => setName(e.target.value)}
                   label="Name"
