@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 import { request } from "../../utils/axios";
 import { dayMontYearDate } from "../../utils/formatDate";
 import { BsBookmark } from "react-icons/bs";
+import JobCard from "../../components/common/JobCard";
+import Loader from "../../components/common/Loader";
+import JobCardSkeleton from "../../components/skeleton/JobCardSkeleton";
 
 export const catagories = [
   "All Job",
@@ -38,8 +41,6 @@ const LatestJobs = () => {
     }
   }, [data]);
 
-  console.log(jobs);
-
   useEffect(() => {
     setLoading(true);
     request
@@ -49,13 +50,14 @@ const LatestJobs = () => {
         setLoading(false);
       })
       .catch((error) => {
+        setLoading(false);
         console.log(error);
       });
   }, []);
 
   return (
     <Container>
-      <h1 className="text-3xl md:text-5xl font-bold text-zinc-700 ">
+      <h1 className="text-3xl md:text-5xl text-center md:text-start font-bold text-zinc-700 ">
         Latest <span className=" text-green-500">Job</span> Here
       </h1>
       <div className=" flex flex-wrap justify-center items-center gap-4 my-5">
@@ -76,54 +78,21 @@ const LatestJobs = () => {
         })}
       </div>
 
-      {!loading && (
-        <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 py-8">
+      {loading ? (
+        <div className=" grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 py-8">
+          <JobCardSkeleton />
+          <JobCardSkeleton />
+          <JobCardSkeleton />
+          <JobCardSkeleton />
+          <JobCardSkeleton />
+          <JobCardSkeleton />
+        </div>
+      ) : (
+        <div className=" grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 py-8">
           {jobs?.length > 0 &&
-            jobs.map((item) => (
-              <div
-                key={item._id}
-                className="shadow-[0_8px_30px_rgb(0,0,0,0.12)] p-6">
-                <div className=" flex justify-between items-start gap-2">
-                  <div className=" flex justify-start items-start gap-3 text-zinc-700">
-                    <img
-                      src={item.author?.avatar}
-                      alt={item.author?.name}
-                      className=" w-14 h-14 rounded-full"
-                    />
-                    <div className="">
-                      <h1 className=" text-2xl font-bold">{item.title}</h1>
-                      <h4 className=" text-sm text-zinc-400">
-                        {item.author?.name}
-                      </h4>
-                    </div>
-                  </div>
-                  <BsBookmark className=" text-2xl" />
-                </div>
-                <div className=" border-l-4 border-l-green-100 pl-2  mt-3">
-                  <h1 className=" text-lg font-bold">
-                    Salary:{" "}
-                    <span className=" text-zinc-500 text-sm">
-                      {item.salary}
-                    </span>
-                  </h1>
-                  <h1 className=" text-lg font-bold mt-2">
-                    Deadline:{" "}
-                    <span className=" text-zinc-500 text-sm">
-                      {dayMontYearDate(item.deadline)}
-                    </span>
-                  </h1>
-                </div>
-                <div className="flex justify-between items-center mt-2">
-                  <div className="">
-                    <span className=" text-lg font-semibold">Applicants</span>{" "}
-                    {item.applicants}
-                  </div>
-                  <button className=" text-green-500 border-b-2 border-green-500">
-                    View
-                  </button>
-                </div>
-              </div>
-            ))}
+            jobs
+              ?.slice(0, 9)
+              .map((item) => <JobCard key={item._id} item={item} />)}
         </div>
       )}
     </Container>
