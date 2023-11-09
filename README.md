@@ -12,10 +12,12 @@
  <p> Project features </p>
 </h2>
 
-- **_Apply a Job:_** Users can create a Job.
+- **_Apply a Job:_** Users can apply a job's.
 - **_Create a Job:_** Users can create a Job.
 - **_Update a Job:_** Users can update a Job.
 - **_Job Details:_** Users can view job details.
+- **_Download Job summery:_** User can download job summery PDF format.
+- **_Filter job's by catagories:_** User can filter job's.
 - **_User Registration:_** Users can create account by providing their email and password.
 - **_User Sign in:_** Users can Sign in by providing their email and password
 - **_Google Authentication:_** Google Authentication options

@@ -3,10 +3,7 @@ import useAuthentication from "../../hooks/useAuthentication";
 import Avatar from "../common/Avatar";
 import { AiOutlineCaretDown } from "react-icons/ai";
 
-const item = [
-  { label: "Account", id: "1", link: "account" },
-  { label: "Logout", id: "2", link: "logout" },
-];
+const item = [{ label: "Logout", id: "2", link: "logout" }];
 
 const MyAccountBtn = () => {
   const [dropdownIsOpen, setIsOpenDropdown] = useState(false);

@@ -2,12 +2,12 @@ import PageHeader from "../../components/common/PageHeader";
 import { useEffect, useState } from "react";
 import { request } from "../../utils/axios";
 import useAuthentication from "../../hooks/useAuthentication";
-import JobCardSkeleton from "../../components/skeleton/JobCardSkeleton";
 import { bgColorByCatagories } from "../../components/common/JobCard";
 import Container from "../../components/common/Container";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import useTitleSet from "../../hooks/useTitleSet";
+import MyJobSkeleton from "../../components/skeleton/MyJobSkeleton";
 
 const catagories = ["All Job", "On Site", "Remote", "Hybrid", "Part Time"];
 
@@ -109,12 +109,9 @@ const MyJobs = () => {
         <Container>
           {loading || loadingUser ? (
             <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 py-8">
-              <JobCardSkeleton />
-              <JobCardSkeleton />
-              <JobCardSkeleton />
-              <JobCardSkeleton />
-              <JobCardSkeleton />
-              <JobCardSkeleton />
+              <MyJobSkeleton />
+              <MyJobSkeleton />
+              <MyJobSkeleton />
             </div>
           ) : (
             <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 py-8">
@@ -148,7 +145,12 @@ const MyJobs = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="flex  justify-start items-center gap-3 ">
+                    <div className="flex  justify-start items-center gap-3 mt-3 ">
+                      <Link
+                        className=" text-sm  px-3 py-1 bg-lime-500 text-white"
+                        to={`/job/${item._id}`}>
+                        View
+                      </Link>
                       <Link
                         className=" text-sm  px-3 py-1 bg-green-500 text-white"
                         to={`/update-job/${item._id}`}>

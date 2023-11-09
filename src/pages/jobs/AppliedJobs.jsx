@@ -39,7 +39,8 @@ const AppliedJobs = () => {
       });
   }, [loadingUser]);
 
-  let jobs = filterJobs.length > 0 ? filterJobs : data;
+  let jobs =
+    filterJobs.length > 0 || selectCatagories?.length > 0 ? filterJobs : data;
 
   const handleCatagoriesCheck = (value) => {
     const findSelectCatagories = selectCatagories?.find((i) => i === value);
@@ -112,6 +113,7 @@ const AppliedJobs = () => {
                       </th>
                     </tr>
                   </thead>
+
                   <tbody className="bg-white divide-y divide-gray-200 ">
                     {loading && (
                       <>
@@ -121,8 +123,24 @@ const AppliedJobs = () => {
                         <TableSkeleton />
                       </>
                     )}
-
+                    {jobs?.length === 0 && !loading && (
+                      <tr>
+                        <td className=" px-4 py-4 text-sm text-zinc-700 whitespace-nowrap">
+                          Empty
+                        </td>
+                        <td className=" px-4 py-4 text-sm text-zinc-700 whitespace-nowrap">
+                          Empty
+                        </td>
+                        <td className=" px-4 py-4 text-sm text-zinc-700 whitespace-nowrap">
+                          Empty
+                        </td>
+                        <td className=" px-4 py-4 text-sm text-zinc-700 whitespace-nowrap">
+                          Empty
+                        </td>
+                      </tr>
+                    )}
                     {jobs?.length > 0 &&
+                      !loading &&
                       jobs.map((item) => (
                         <tr key={item._id}>
                           <td className="px-4 py-4 text-sm text-zinc-700 whitespace-nowrap">
@@ -157,13 +175,6 @@ const AppliedJobs = () => {
             </div>
           </div>
         </div>
-        {jobs?.length === 0 && (
-          <>
-            <h1 className=" text-3xl font-semibold uppercase text-center w-full mt-5">
-              No jobs
-            </h1>
-          </>
-        )}
       </section>
     </div>
   );

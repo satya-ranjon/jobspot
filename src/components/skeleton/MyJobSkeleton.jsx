@@ -1,4 +1,4 @@
-const JobCardSkeleton = () => {
+const MyJobSkeleton = () => {
   return (
     <div
       role="status"
@@ -21,21 +21,6 @@ const JobCardSkeleton = () => {
         </div>
       </div>
 
-      <div className=" flex justify-start items-center gap-3  mt-4">
-        <div className="h-14 w-2  bg-[#e8f3f7] rounded-md  mb-2.5"></div>
-
-        <div className=" w-full">
-          <div className=" flex justify-start items-center gap-2 w-full">
-            <div className="h-4 w-3/4  bg-[#e8f3f7] rounded-md  mb-2.5"></div>
-          </div>
-          <div className=" flex justify-start items-center gap-2 w-full">
-            <div className="h-4 w-3/4  bg-[#e8f3f7] rounded-md  mb-2.5"></div>
-          </div>
-          <div className=" flex justify-start items-center gap-2 w-full">
-            <div className="h-4 w-3/4  bg-[#e8f3f7] rounded-md  mb-2.5"></div>
-          </div>
-        </div>
-      </div>
       <div className=" w-full flex justify-between items-center">
         <div className="h-4 w-36 mt-4 bg-[#e8f3f7] rounded-md "></div>
         <div className="h-6 w-36 mt-4 bg-[#e8f3f7] rounded-md "></div>
@@ -44,4 +29,4 @@ const JobCardSkeleton = () => {
   );
 };
 
-export default JobCardSkeleton;
+export default MyJobSkeleton;

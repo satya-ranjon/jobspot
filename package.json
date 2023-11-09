@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
+    "add": "^2.0.6",
     "axios": "^1.6.0",
     "firebase": "^10.5.2",
     "react": "^18.2.0",
@@ -19,7 +20,9 @@
     "react-icons": "^4.11.0",
     "react-router-dom": "^6.18.0",
     "react-select": "^5.8.0",
-    "sweetalert2": "^11.9.0"
+    "react-to-pdf": "^1.0.1",
+    "sweetalert2": "^11.9.0",
+    "yarn": "^1.22.19"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
