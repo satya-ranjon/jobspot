@@ -27,7 +27,9 @@ const JobDetails = () => {
   const [applyModalIsOpen, setApplyModalIsOpen] = useState(false);
   useTitleSet("Job Details");
   const form = useRef();
-  const { toPDF, targetRef } = usePDF({ filename: "page.pdf" });
+  const { toPDF, targetRef } = usePDF({
+    filename: `ApplyJob-${data?.title}.pdf`,
+  });
 
   const { id } = useParams();
 
