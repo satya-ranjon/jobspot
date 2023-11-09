@@ -7,14 +7,15 @@ import { BsBookmark } from "react-icons/bs";
 import { MdDateRange } from "react-icons/md";
 import { FcMoneyTransfer } from "react-icons/fc";
 import { FaUsers } from "react-icons/fa6";
-import { AiOutlineClose } from "react-icons/ai";
+import { AiOutlineArrowDown, AiOutlineClose } from "react-icons/ai";
 import { dayMontYearDate } from "../../utils/formatDate";
 import useAuthentication from "../../hooks/useAuthentication";
 import InputField from "../../components/common/InputField";
 import Swal from "sweetalert2";
 import { bgColorByCatagories } from "../../components/common/JobCard";
 import useTitleSet from "../../hooks/useTitleSet";
-import emailjs from "@emailjs/browser";
+// import emailjs from "@emailjs/browser";
+import { usePDF } from "react-to-pdf";
 
 const JobDetails = () => {
   const [data, setData] = useState([]);
@@ -26,6 +27,7 @@ const JobDetails = () => {
   const [applyModalIsOpen, setApplyModalIsOpen] = useState(false);
   useTitleSet("Job Details");
   const form = useRef();
+  const { toPDF, targetRef } = usePDF({ filename: "page.pdf" });
 
   const { id } = useParams();
 
@@ -85,22 +87,6 @@ const JobDetails = () => {
       .then((response) => {
         console.log("Response data:", response.data);
         handleApplyModal();
-        emailjs
-          .sendForm(
-            "service_6sq35us",
-            "template_xjvpamt",
-            form.current,
-            "3ubMgALnbHWBTu2Mw"
-          )
-          .then(
-            (result) => {
-              console.log(result.text);
-            },
-            (error) => {
-              console.log(error.text);
-            }
-          );
-
         Swal.fire({
           icon: "success",
           title: "Apply Successfully",
@@ -127,15 +113,15 @@ const JobDetails = () => {
   return loading ? (
     <Loader hight="h-[600px]" />
   ) : (
-    <div>
-      <div className="h-[400px] w-full text-zinc-700">
-        <img
-          src={data?.bannerUrl}
-          alt=""
-          className=" h-[400px] w-full opacity-90"
-        />
-      </div>
+    <div ref={targetRef}>
       <Container>
+        <div className="h-[250px] md:h-[400px] w-full text-zinc-700">
+          <img
+            src={data?.bannerUrl}
+            alt=""
+            className="h-[250px] md:h-[400px] w-full opacity-90"
+          />
+        </div>
         <div className="py-8">
           <div className=" flex justify-start items-start gap-4  ">
             <img
@@ -185,22 +171,31 @@ const JobDetails = () => {
                 {data?.catagories}
               </span>
             </div>
-            {!dateLineOver ? (
+
+            <div className=" flex justify-start items-center gap-5">
+              {!dateLineOver ? (
+                <button
+                  onClick={handleApplyModal}
+                  disabled={user?.email === data?.author?.email}
+                  className={` ${
+                    user?.email === data?.author?.email
+                      ? "text-green-100 border-green-100"
+                      : "text-green-500 border-green-500"
+                  } w-fit px-3 md:px-5 py-1 md:py-2 text-sm md:text-md  font-semibold rounded-md border-[2px]  `}>
+                  Apply Now
+                </button>
+              ) : (
+                <span className=" text-red-500 text-sm font-semibold uppercase">
+                  dateline over
+                </span>
+              )}
               <button
-                onClick={handleApplyModal}
-                disabled={user?.email === data?.author?.email}
-                className={` ${
-                  user?.email === data?.author?.email
-                    ? "text-green-100 border-green-100"
-                    : "text-green-500 border-green-500"
-                } w-fit px-5 py-2 text-md  font-semibold rounded-md border-[2px]  `}>
-                Apply Now
+                onClick={() => toPDF()}
+                className="font-semibold hover:text-green-500 duration-300 transition-colors text-orange-500 flex justify-start items-center gap-1 text-sm">
+                <AiOutlineArrowDown className=" text-xl " />
+                Download Summary
               </button>
-            ) : (
-              <span className=" text-red-500 text-sm font-semibold uppercase">
-                dateline over
-              </span>
-            )}
+            </div>
           </div>
           <h5 className="mt-8 uppercase text-xl text-zinc-700 font-semibold">
             description :
