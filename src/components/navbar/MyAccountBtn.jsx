@@ -1,13 +1,22 @@
-import React, { useState } from "react";
+import { useRef, useState } from "react";
 import useAuthentication from "../../hooks/useAuthentication";
 import Avatar from "../common/Avatar";
 import { AiOutlineCaretDown } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
+import useOutsideClick from "../../hooks/useOutsideClick";
 
-const item = [{ label: "Logout", id: "2", link: "logout" }];
+const item = [
+  { link: "/applied-jobs", id: "3", label: "Applied Jobs" },
+  { link: "/create-job", id: "4", label: "Create Job" },
+  { link: "/my-jobs", id: "4", label: "My Jobs" },
+  { label: "Logout", id: "2", link: "logout" },
+];
 
 const MyAccountBtn = () => {
   const [dropdownIsOpen, setIsOpenDropdown] = useState(false);
   const { user, logoutUser } = useAuthentication();
+  const navigate = useNavigate();
+  const dropdownRef = useRef(null);
 
   const handleNavigate = (value) => {
     if (value === "logout") {
@@ -15,9 +24,15 @@ const MyAccountBtn = () => {
       setIsOpenDropdown(false);
       return;
     }
+    navigate(value);
+    setIsOpenDropdown(false);
   };
+
+  useOutsideClick(dropdownRef, () => {
+    setIsOpenDropdown(false);
+  });
   return (
-    <div className=" relative">
+    <div ref={dropdownRef} className=" relative">
       <button
         onClick={() => setIsOpenDropdown((prev) => !prev)}
         className=" flex justify-start items-center gap-2 text-zinc-500 text-lg round-md font-normal px-3 py-1 border-[1px] border-[#22c55e45] ">

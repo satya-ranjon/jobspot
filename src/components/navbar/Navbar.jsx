@@ -1,10 +1,9 @@
 import useDisplayWidth from "../../hooks/useDisplayWidth";
-import Avatar from "../common/Avatar";
 import Container from "../common/Container";
 import Logo from "../common/Logo";
 import { NavLink } from "react-router-dom";
 import { FaBarsStaggered } from "react-icons/fa6";
-import { AiOutlineClose, AiOutlineCaretDown } from "react-icons/ai";
+import { AiOutlineClose } from "react-icons/ai";
 import { useLayoutEffect, useState } from "react";
 import useAuthentication from "../../hooks/useAuthentication";
 import MyAccountBtn from "./MyAccountBtn";
@@ -12,8 +11,7 @@ import MyAccountBtn from "./MyAccountBtn";
 const menu = [
   { link: "/", label: "Home" },
   { link: "all-jobs", label: "All Jobs" },
-  { link: "/applied-jobs", label: "Applied Jobs" },
-  { link: "/my-jobs", label: "My Jobs" },
+
   { link: "/blog/1", label: "Blog" },
 ];
 
@@ -23,13 +21,16 @@ const Navbar = () => {
   const { user } = useAuthentication();
 
   useLayoutEffect(() => {
-    if (768 <= width) {
+    if (width > 768) {
       setIsOpen(true);
     }
-    if (768 >= width) {
+    if (width <= 768) {
       setIsOpen(false);
     }
   }, [width]);
+
+  console.log("width", width > 768);
+  console.log("width", width);
 
   return (
     <div className=" py-4 bg-[#e8f3f7] ">
@@ -72,12 +73,6 @@ const Navbar = () => {
                     Login/Register
                   </NavLink>
                 )}
-
-                <NavLink
-                  to="/create-job"
-                  className=" lg:hidden text-white text-lg round-md font-normal px-3 py-1 bg-green-500 ">
-                  Add a Job
-                </NavLink>
               </div>
             )}
           </div>
@@ -93,11 +88,6 @@ const Navbar = () => {
                 Login/Register
               </NavLink>
             )}
-            <NavLink
-              to="/create-job"
-              className=" text-white text-lg round-md font-normal px-3 py-1 bg-green-500 ">
-              Add a Job
-            </NavLink>
           </div>
           <div
             onClick={() => setIsOpen(true)}
