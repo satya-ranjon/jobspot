@@ -42,9 +42,9 @@ const MyAccountBtn = () => {
       {dropdownIsOpen && (
         <div className=" absolute top-10 w-full z-50 bg-[#e8f3f7] border-[1px] border-[#22c55e45]">
           <div className=" flex flex-col gap-1 w-full">
-            {item.map((i) => (
+            {item.map((i, index) => (
               <span
-                key={i.id}
+                key={index}
                 onClick={() => handleNavigate(i.link)}
                 className=" w-full px-2 text-md py-1 hover:bg-slate-50 cursor-pointer border-b-[1px]">
                 {i.label}

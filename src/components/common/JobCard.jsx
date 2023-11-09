@@ -11,7 +11,7 @@ export const bgColorByCatagories = {
 
 const JobCard = ({ item }) => {
   return (
-    <div key={item._id} className="shadow-[0_8px_30px_rgb(0,0,0,0.12)] p-6">
+    <div className="shadow-[0_8px_30px_rgb(0,0,0,0.12)] p-6">
       <div className=" flex justify-between items-start gap-2 w-full">
         <div className=" flex justify-start items-start gap-3 text-zinc-700 w-full">
           <img

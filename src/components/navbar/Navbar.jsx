@@ -52,7 +52,7 @@ const Navbar = () => {
                 {menu.map((item, i) => (
                   <NavLink
                     to={item.link}
-                    key={i}
+                    key={item.link}
                     className={({ isActive }) =>
                       isActive
                         ? "text-yellow-500 border-b-2 border-b-yellow-500 "
